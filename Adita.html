@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noviembre Mágico - Nuestra Historia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        .cursive-text {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: fixed;
+            font-size: 1.5rem;
+            color: rgba(239, 68, 68, 0.3);
+            animation: floatUp 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #fca5a5;
+            /* red-300 */
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even),
+            .timeline-item:nth-child(odd) {
+                left: 0;
+            }
+        }
+
+        /* The Circles on the Timeline */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid #ef4444;
+            /* red-500 */
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item::after {
+                left: 21px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+
+        /* Image Placeholder Style */
+        .img-placeholder {
+            background: #ffe4e6;
+            border: 2px dashed #fda4af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #be123c;
+            transition: transform 0.3s ease;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body class="text-gray-800 antialiased relative">
+
+    <!-- JavaScript to generate floating hearts -->
+    <script>
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement('i');
+                heart.className = 'fas fa-heart heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = 8 + Math.random() * 7 + 's';
+                heart.style.fontSize = (0.5 + Math.random() * 1.5) + 'rem';
+                document.body.appendChild(heart);
+            }
+        }
+        window.onload = createHearts;
+    </script>
+
+    <!-- Header -->
+    <header
+        class="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gradient-to-b from-rose-100 to-transparent">
+        <div class="max-w-3xl mx-auto">
+            <i class="fas fa-camera-retro text-4xl text-rose-500 mb-4 animate-bounce"></i>
+            <h1 class="text-6xl md:text-8xl text-rose-600 mb-6 drop-shadow-sm">Ada e Iker</h1>
+            <p class="text-xl md:text-2xl text-gray-700 italic mb-8 leading-relaxed">
+                "Hay meses que simplemente pasan, y luego está el mes en el que mi vida cambió para siempre."
+            </p>
+            <p class="text-lg text-gray-600 mb-12">
+                Ada, este es un pequeño viaje por los días en los que pasaste de ser una desconocida ,a convertirte en
+                mi chica soñada, mi compañera de rutas y el amor de mi vida.
+            </p>
+            <a href="#historia"
+                class="inline-block bg-rose-500 text-white px-8 py-3 rounded-full text-lg hover:bg-rose-600 transition-colors shadow-lg shadow-rose-200">
+                Revivir nuestra historia <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Timeline Section -->
+    <main id="historia" class="max-w-6xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+        <div class="timeline-container">
+
+            <!-- EVENT 1: 13 de Noviembre -->
+            <div class="timeline-item">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-rose-50">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-rose-100 text-rose-600 p-3 rounded-full">
+                            <i class="fas fa-cloud-rain text-xl"></i>
+                        </span>
+                        <h2 class="text-3xl text-rose-600 font-bold">13 de Noviembre</h2>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">El destino, una falda a cuadros y una cámara
+                        rota</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Era una noche lluviosa. Bendito sea el amigo que me convenció para ir a esa barrilada, porque yo
+                        no suelo salir, pero el destino tenía otros planes. Te vi aparecer con esa falda a cuadros que
+                        te queda tan bonita y, en ese mismo instante, se lo dije a mi amigo: <em>"Esa chica me ha
+                            gustado"</em>.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Yo no tenía el coraje para acercarme, la vergüenza me paralizaba. Suerte de aquella cámara de
+                        fotos estropeada que nos sirvió de excusa perfecta para romper el hielo. Jugamos al futbolín, te
+                        fuiste de repente y pensé que lo había arruinado... Estuve dándole vueltas, sintiéndome pesado,
+                        hasta que saqué un valor que no sabía que tenía para volver a hablarte.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-6 font-semibold">
+                        Y entonces me dijiste que eras ciclista. En ese segundo, el mundo se cayó a mis pies. No me lo
+                        podía creer: eras hermosa y compartías mi misma pasión. Te pedí el Instagram tartamudeando de
+                        los nervios. Aquella noche volví a casa siendo el chico más feliz del mundo, contándole a todos
+                        que había encontrado a la chica de mis sueños.
+                    </p>
+
+                    <!-- Image Placeholder -->
+                    <div class="img-placeholder h-64 rounded-xl w-full overflow-hidden">
+                        <img src="Adita.jpeg" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENT 2: 18 de Noviembre -->
+            <div class="timeline-item">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-rose-50">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-rose-100 text-rose-600 p-3 rounded-full">
+                            <i class="fas fa-bicycle text-xl"></i>
+                        </span>
+                        <h2 class="text-3xl text-rose-600 font-bold">18 de Noviembre</h2>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">La cita más extraña (y perfecta) del mundo</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Nuestra primera cita oficial. Fuimos a subir la Fuente de la Reina con las bicis. Hablamos, nos
+                        conocimos, todo fluía. Coronamos el puerto, nos hicimos la foto de la gesta y el sol se
+                        escondió.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Lo que no esperábamos era el frío polar de la bajada. Tiritábamos sin control. Desesperados, en
+                        el mirador de una venta, vi una furgoneta. ¡Era una emergencia! Les pedí refugio y terminamos tú
+                        y yo metidos en la parte de atrás de una furgoneta de frutería, sin ventanas, a oscuras,
+                        sentados en un neumático con una manta.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Congelados y sin saber a dónde íbamos, nos abrazamos. Tú apoyaste tu cabeza en mi pecho, yo me
+                        acurruqué en ti. Y entonces soltaste esa frase que jamás olvidaré: <em>"Vaya primera cita más
+                            extraña"</em>. Sentí que el corazón se me salía del pecho. Abrazados en la oscuridad,
+                        mirando el Google Maps por si nos raptaban... reímos y entendí que, incluso en la situación más
+                        surrealista, mi lugar favorito era estar a tu lado.
+                    </p>
+
+                    <!-- Image Placeholder -->
+                    <div class="img-placeholder h-64 rounded-xl w-full overflow-hidden">
+                        <img src="La reina.jpeg" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENT 3: 23 de Noviembre -->
+            <div class="timeline-item">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-rose-50">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-rose-100 text-rose-600 p-3 rounded-full">
+                            <i class="fas fa-bowling-ball text-xl"></i>
+                        </span>
+                        <h2 class="text-3xl text-rose-600 font-bold">23 de Noviembre</h2>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">El día que empezó nuestro "Para Siempre"</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Fuimos a jugar a los bolos y allí te pedí que fueras mi novia. Salimos de allí caminando de la
+                        mano, oficiales por fin. Y como nuestra historia no puede estar libre de anécdotas, apareció una
+                        ambulancia en el paso de cebra con tus conocidos de las prácticas de enfermería. ¡Qué vergüenza
+                        pasaste de que te vieran de la mano de "otro chico"! Nos reímos a carcajadas.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Pero el momento que guardo como un tesoro ocurrió después, en la parte de atrás de mi coche.
+                        Estuvimos horas hablando, contándonos nuestros sueños, metas y el futuro que nos gustaría
+                        construir juntos.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-6 font-bold text-rose-600">
+                        Comencé a acariciar tu pelo, tu hermosa cara, diciéndote lo bonita que eras. Te besé la mejilla
+                        y, después, nos dimos nuestro primer beso. Fue intenso, especial, mágico. Una noche de pasión
+                        donde nos dijimos muchísimo. Fue el comienzo oficial de lo más bonito que me ha pasado en la
+                        vida.
+                    </p>
+
+                    <!-- Image Placeholder -->
+                    <div class="img-placeholder h-64 rounded-xl w-full overflow-hidden">
+                        <img src="Bolillos.jpeg" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 text-center bg-rose-50">
+        <div class="max-w-2xl mx-auto px-4">
+            <h2 class="cursive-text text-5xl text-rose-600 mb-6">Contigo, cada día es una nueva aventura</h2>
+            <p class="text-xl text-gray-700 mb-8">
+                Gracias, Ada, por ser la ciclista de mis sueños, por aguantar el frío en furgonetas sin ventanas y por
+                hacerme el hombre más feliz del mundo aquel 23 de noviembre. Y esto... esto es solo el principio de
+                nuestra ruta.
+            </p>
+            <div class="inline-flex items-center gap-2 text-rose-500 font-bold text-2xl">
+                Te quiero <i class="fas fa-heart animate-pulse"></i>
+            </div>
+            <!-- Sección final con foto y pregunta -->
+            <div class="mt-16 flex flex-col items-center">
+
+                <img src="Te amo.jpeg"
+                    class="w-72 h-72 object-cover rounded-2xl shadow-xl border-4 border-white mb-6">
+
+                <p class="text-2xl md:text-3xl text-gray-700 italic leading-relaxed max-w-xl">
+                    Yo me quedo con la fecha en la que estoy a tu lado…
+                    <span class="block mt-3 text-rose-600 font-semibold">
+                        ¿y tú, con cuál te quedas?
+                    </span>
+                </p>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script to animate timeline items on scroll -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+
+</html>
